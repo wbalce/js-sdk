@@ -1,5 +1,0 @@
-kind: Item
-metadata:
-  template: vehicle
-spec:
-  label: DMC DeLorean
