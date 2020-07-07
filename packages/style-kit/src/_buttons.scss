@@ -25,18 +25,31 @@
   @include button-base;
   background-color: map-get($theme, 'primary');
   color: white;
+
+  &:hover {
+    background: darken($meeco-red, 5%);
+  }
 }
 
 @mixin text-button($theme) {
   @include button-base;
   background-color: transparent;
   color: map-get($theme, 'primary');
+
+  &:hover {
+    color: darken(map-get($theme, 'primary'), 10%);
+    transform: scale(1.1);
+  }
 }
 
 @mixin secondary-button($theme) {
   @include button-base;
   background-color: map-get($theme, 'secondary');
   color: map-get($theme, 'primary');
+
+  &:hover {
+    background-color: transparentize(map-get($theme, 'primary'), 0.85);
+  }
 }
 
 @mixin icon-button($theme) {
@@ -59,29 +72,24 @@
 @mixin buttons-main($theme) {
   button {
     margin: 16px;
+
+    // Primary small is the default button
+    @include primary-button($theme);
+    @include button-spacing-small;
+
     &:focus {
       outline: none;
       box-shadow: 0 0 0 3px transparentize(map-get($theme, 'primary'), 0.5);
     }
     &.primary {
       @include primary-button($theme);
-      &:hover {
-        background: darken($meeco-red, 5%);
-      }
     }
     &.secondary {
       @include secondary-button($theme);
-      &:hover {
-        background-color: transparentize(map-get($theme, 'primary'), 0.85);
-      }
     }
     &.text {
       @include text-button($theme);
       transition: all 0.2s ease-in-out;
-      &:hover {
-        color: darken(map-get($theme, 'primary'), 10%);
-        transform: scale(1.1);
-      }
     }
 
     &.large {
@@ -90,6 +98,7 @@
     &.small {
       @include button-spacing-small;
     }
+
     &.icon {
       @include text-button-icon($theme);
       transition: all 0.2s ease-in-out;
