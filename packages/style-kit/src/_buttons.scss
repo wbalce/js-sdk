@@ -27,18 +27,39 @@
   @include button-base;
   background-color: map-get($theme, 'primary');
   color: white;
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: map-get($theme, 'disabled');
+    cursor: not-allowed;
+  }
 }
 
 @mixin text-button($theme) {
   @include button-base;
   background-color: transparent;
   color: map-get($theme, 'primary');
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: transparent;
+    color: map-get($theme, 'disabled');
+    cursor: not-allowed;
+  }
 }
 
 @mixin secondary-button($theme) {
   @include button-base;
   background-color: map-get($theme, 'secondary');
   color: map-get($theme, 'primary');
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: map-get($theme, 'disabled');
+    color: white;
+    cursor: not-allowed;
+  }
 }
 
 @mixin icon-button($theme) {

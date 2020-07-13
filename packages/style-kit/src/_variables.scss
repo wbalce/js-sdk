@@ -54,6 +54,7 @@ $grid: 8px;
 $meeco-theme: (
   primary: map-get($meeco-red-palette, 'base'),
   secondary: map-get($meeco-red-palette, 'tint10'),
+  disabled: map-get($meeco-smoke-palette, 'shade'),
   placeholder: map-get($meeco-smoke-palette, 'shade'),
   highlight: map-get($meeco-blue-palette, 'base'),
   dark: map-get($meeco-charcoal-palette, 'base'),
