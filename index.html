@@ -86,7 +86,7 @@
 <span class="hljs-keyword">const</span> buffer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'buffer'</span>);
 (<span class="hljs-built_in">window</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>).Buffer = buffer;
 (<span class="hljs-built_in">window</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>).process = {
-  browser: <span class="hljs-literal">true</span>,
+  browser: <span class="hljs-literal">true</span>
 };</code></pre>
 				<p>You will also need to configure your <code>compilerOptions</code> in your <code>tsconfig.base.json</code> as follows:</p>
 				<pre><code class="language-json">{
@@ -208,10 +208,10 @@ configureFetch(fetchPolyfill);
 
 <span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> ItemService(environment);
 <span class="hljs-keyword">const</span> item = <span class="hljs-keyword">await</span> service.create(user.vault_access_token, user.data_encryption_key, {
+  template_name: availableTemplates.item_templates[<span class="hljs-number">0</span>].name,
   item: {
     label: <span class="hljs-string">'My Car'</span>
   },
-  templateName: availableTemplates.item_templates[<span class="hljs-number">0</span>].name,
   slots: [
     {
       name: <span class="hljs-string">'make_model'</span>,
