@@ -34,6 +34,12 @@
   &:active {
     background: darken(map-get($theme, 'primary'), 5%);
   }
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: map-get($theme, 'disabled');
+    cursor: not-allowed;
+  }
 }
 
 @mixin text-button($theme) {
@@ -47,6 +53,13 @@
   &:active {
     color: darken(map-get($theme, 'primary'), 5%);
   }
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: transparent;
+    color: map-get($theme, 'disabled');
+    cursor: not-allowed;
+  }
 }
 
 @mixin secondary-button($theme) {
@@ -59,6 +72,13 @@
   }
   &:active {
     background: darken(map-get($theme, 'secondary'), 5%);
+  }
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: map-get($theme, 'disabled');
+    color: white;
+    cursor: not-allowed;
   }
 }
 

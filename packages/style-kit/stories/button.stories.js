@@ -11,13 +11,13 @@ export const catalog = () => {
   const container = document.createElement('div');
   container.className = story;
 
-  const colors = ['primary', 'secondary', 'text'];
+  const styles = ['primary', 'secondary', 'text'];
   const sizes = ['large', 'small'];
-  colors.forEach(color => {
+  styles.forEach(style => {
     sizes.forEach(size => {
       const button = document.createElement('button');
-      button.className = `${color} ${size}`;
-      button.innerHTML = titleWords(`${color} ${size}`);
+      button.className = `${style} ${size}`;
+      button.innerHTML = titleWords(`${style} ${size}`);
       container.appendChild(button);
     });
   });
@@ -31,6 +31,20 @@ export const catalog = () => {
         ? meecoIcons('share')
         : `<span>${meecoIcons('share')}</span> text with icon `;
     container.appendChild(iconButton);
+  });
+
+  const disabledButtons = document.createElement('p');
+  disabledButtons.innerHTML = 'Disabled:';
+  container.appendChild(disabledButtons);
+
+  styles.forEach(style => {
+    sizes.forEach(size => {
+      const button = document.createElement('button');
+      button.className = `${style} ${size}`;
+      button.innerHTML = titleWords(`${style} ${size}`);
+      button.setAttribute('disabled', true);
+      container.appendChild(button);
+    });
   });
 
   return container;
