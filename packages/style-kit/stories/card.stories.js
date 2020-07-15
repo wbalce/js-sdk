@@ -1,5 +1,7 @@
-export default { title: 'Cards and Shadows' };
 import { story } from 'style-loader!./card.stories.scss';
+import { withKnobs, text } from '@storybook/addon-knobs';
+
+export default { title: 'Cards and Shadows', decorators: [withKnobs] };
 
 export const shadows = () => /*html*/ `
 <div class="${story} shadows">
@@ -12,15 +14,21 @@ export const shadows = () => /*html*/ `
 </div>
 `;
 
-export const cards = () => /*html*/ `
+export const cards = () => {
+  const basicTitle = text('Basic Card Title', 'Basic Card');
+  const basicSubtitle = text('Basic Card Label', 'Sub-label (Optional)');
+  const footerText = text('Card Footer Text', 'Some Footer Text');
+
+  return /*html*/ `
+
 <div class="${story} advanced">
   <p>Basic Card</p>
   <div class="card basic">
     <div class="content">
       <div class="icon"></div>
       <div>
-        <p class="card-label">Card Label</p>
-        <p class="subtitle">Sub-label (Optional)</p>
+        <p class="card-label">${basicTitle}</p>
+        ${basicSubtitle ? `<p class="subtitle">${basicSubtitle}</p>` : ''}
       </div>
     </div>
   </div>
@@ -32,7 +40,7 @@ export const cards = () => /*html*/ `
       <p class="card-label">Shared Card Label</p>
     </div>
     <div class="footer">
-      <p class="subtitle">Some Footer Text</p>
+      <p class="subtitle">${footerText}</p>
     </div>
   </div>
 
@@ -63,6 +71,7 @@ export const cards = () => /*html*/ `
   </div>
 </div>
 `;
+};
 
 const largeCard = () => /*html*/ `
 <div class="card">
@@ -76,6 +85,20 @@ const largeCard = () => /*html*/ `
         delectus animi doloribus eveniet, veritatis officia adipisci
         officiis, dolorem suscipit obcaecati possimus porro nisi.
       </p>
+    </div>
+  </div>
+</div>
+`;
+
+export const tile = () => /*html*/ `
+<div class=${story}>
+  <p>Tile</p>
+  <p class="small">Tiles are similiar to cards, except they are either square or taller than they are wide</p>
+  <div class="tile">
+    <div class="icon"></div>
+    <div class="content">
+      <p class="tile-label">Tile label</p>
+      <span class="tag">Optional Tag</span>
     </div>
   </div>
 </div>

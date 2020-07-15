@@ -1,0 +1,15 @@
+@import '../index';
+
+:local(.story) {
+  padding-top: 32px;
+
+  @include typography-main($meeco-theme, true);
+  @include pills-main($meeco-theme);
+
+  .tab-background-samples {
+    .sample {
+      padding: 20px;
+      transition: color 0.2s ease-out;
+    }
+  }
+}
