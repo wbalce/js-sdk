@@ -43,8 +43,8 @@
 
 @mixin secondary-button($theme) {
   @include button-base;
-  background-color: _tint(map-get($theme, 'secondary'), 90%);
-  color: map-get($theme, 'secondary');
+  background-color: _tint(map-get($theme, 'primary'), 90%);
+  color: map-get($theme, 'primary');
 }
 
 @mixin icon-button($theme) {
@@ -52,20 +52,6 @@
   @include button-round;
   padding: 10px;
   text-align: center;
-}
-
-@mixin text-button-icon($theme) {
-  @include text-button($theme);
-  color: map-get($theme, 'primary');
-  font-size: 18px;
-
-  i,
-  .icon {
-    padding-right: 0.5rem;
-    vertical-align: middle;
-    display: inline-block;
-    color: map-get($theme, 'primary');
-  }
 }
 
 @mixin buttons-main($theme) {
@@ -90,10 +76,10 @@
     &.secondary {
       @include secondary-button($theme);
       &:hover {
-        background: darken(map-get($theme, 'secondary'), 10%);
+        background: _tint(map-get($theme, 'primary'), 80%);
       }
       &:active {
-        background: darken(map-get($theme, 'secondary'), 5%);
+        background: _tint(map-get($theme, 'primary'), 85%);
       }
     }
     &.text {
@@ -105,29 +91,19 @@
         color: darken(map-get($theme, 'primary'), 5%);
       }
     }
-
     &.large {
       @include button-spacing-large;
     }
     &.small {
       @include button-spacing-small;
     }
-    &.icon-text {
-      @include text-button-icon($theme);
-      &:hover {
-        color: darken(map-get($theme, 'dark'), 10%);
-      }
-      &:active {
-        color: darken(map-get($theme, 'dark'), 5%);
-      }
-    }
     &.icon-only {
       @include icon-button($theme);
       &:hover {
-        background: darken(map-get($theme, 'secondary'), 10%);
+        background: _tint(map-get($theme, 'primary'), 80%);
       }
       &:active {
-        background: darken(map-get($theme, 'secondary'), 5%);
+        background: _tint(map-get($theme, 'primary'), 85%);
       }
     }
   }

@@ -1,29 +1,27 @@
-export default { title: 'Button' };
+export default {
+  title: 'Button'
+};
 
 import { story } from 'style-loader!./button.stories.scss';
-
-import { titleWords } from './helpers';
 
 export const catalog = () => {
   const container = document.createElement('div');
   container.className = story;
 
-  const colors = ['primary', 'secondary', 'text'];
-  const sizes = ['large', 'small'];
-  colors.forEach(color => {
-    sizes.forEach(size => {
-      const button = document.createElement('button');
-      button.className = `${color} ${size}`;
-      button.innerHTML = titleWords(`${color} ${size}`);
-      container.appendChild(button);
-    });
-  });
+  container.innerHTML =
+    /* html*/
 
-  const iconButtons = document.createElement('div');
-  iconButtons.innerHTML = `
-  <button class="text"><i>share</i>text with icon</button>
-  <button class="icon-only"><i>add</i></button>`;
-  container.appendChild(iconButtons);
+    `<button class="primary large">Primary Large</button>
+     <button class="primary small">Primary Small</button>
+
+     <button class="secondary large">Secondary Large</button>
+     <button class="secondary small">Secondary small</button>
+
+     <button class="text large">Text large</button>
+     <button class="text small">Text small</button>
+
+     <button class="text large"><i>share</i>text with icon</button>
+     <button class="icon-only"><i>add</i></button>`;
 
   return container;
 };

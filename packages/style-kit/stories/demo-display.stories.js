@@ -4,8 +4,6 @@ import { story } from 'style-loader!./demo-display.stories.scss';
 
 import { useEffect } from '@storybook/client-api';
 
-import imagePlaceholder from '../assets/image-placeholder.png';
-
 export const mobileScreens = () => {
   useEffect(() => {
     const tabs = document.getElementsByClassName('tab');
