@@ -103,3 +103,5 @@ const convertUndefinedObjectValuesRecursive = (obj, replacement) => {
 export const replaceUndefinedWithNull = obj => {
   return convertUndefinedObjectValuesRecursive(obj, null);
 };
+
+export const MOCK_NEXT_PAGE_AFTER = '00856148-6188-4b58-aca1-e15ceb7bbe13';

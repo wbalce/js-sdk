@@ -1,7 +1,13 @@
 import { ItemService } from '@meeco/sdk';
 import { expect } from '@oclif/test';
 import { readFileSync } from 'fs';
-import { customTest, outputFixture, testEnvironmentFile, testUserAuth } from '../../test-helpers';
+import {
+  customTest,
+  outputFixture,
+  testEnvironmentFile,
+  testGetAll,
+  testUserAuth,
+} from '../../test-helpers';
 
 describe('items:list', () => {
   customTest
@@ -12,10 +18,22 @@ describe('items:list', () => {
       const expected = readFileSync(outputFixture('list-items.output.yaml'), 'utf-8');
       expect(ctx.stdout).to.contain(expected);
     });
+
+  customTest
+    .stub(ItemService.prototype, 'listAll', list as any)
+    .stdout()
+    .run(['items:list', ...testUserAuth, ...testEnvironmentFile, ...testGetAll])
+    .it('lists all items that the user has when paginated', ctx => {
+      const expected = readFileSync(outputFixture('list-items.output.yaml'), 'utf-8');
+      expect(ctx.stdout).to.contain(expected);
+    });
 });
 
 function list(vaultAccessToken: string) {
-  return Promise.resolve({
+  return Promise.resolve(response);
+}
+
+const response = {
     next_page_after: null,
     associations: [],
     associations_to: [],
@@ -128,6 +146,5 @@ function list(vaultAccessToken: string) {
         share_id: null,
       },
     ],
-    meta: null,
-  });
-}
+    meta: [],
+};
